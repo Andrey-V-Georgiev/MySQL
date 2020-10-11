@@ -31,6 +31,7 @@ CREATE TABLE `articles` (
 CREATE TABLE `users_articles` (
 	user_id INTEGER ,
     article_id INTEGER,
+    PRIMARY KEY (user_id, article_id),
     CONSTRAINT fk_user_id FOREIGN KEY (user_id)  REFERENCES users(id),
     CONSTRAINT fk_article_id FOREIGN KEY (article_id)  REFERENCES articles(id)
 );
@@ -51,7 +52,6 @@ CREATE TABLE `likes` (
     article_id INTEGER,
     comment_id INTEGER,
     user_id INTEGER,
-    
 	CONSTRAINT fk_likes_article_id FOREIGN KEY (article_id)  REFERENCES articles(id),
 	CONSTRAINT fk_likes_comment_id FOREIGN KEY (comment_id)  REFERENCES comments(id),
     CONSTRAINT fk_likes_user_id FOREIGN KEY (user_id)  REFERENCES users(id)
